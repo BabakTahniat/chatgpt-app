@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
+import { auth } from '@/auth';
+import UserButton from '@/components/UserButton';
+import { SessionProvider } from 'next-auth/react';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -28,6 +31,11 @@ export default function RootLayout({
               About
             </Link>
           </div>
+          <SessionProvider>
+            <div>
+              <UserButton />
+            </div>
+          </SessionProvider>
         </header>
 
         <div className="flex flex-col md:flex-row">
